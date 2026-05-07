@@ -8,7 +8,7 @@ const app = express()
 const tasksRoutes = require('./routes/tasksRoutes.js')
 const useRoutes = require('./routes/userRoutes.js')
 
-app.use(cors('http://localhost:5173/'))
+app.use(cors(process.env.FRONTEND_URL))
 app.use(express.json())
 app.use((req, res, next) => {
         const start = Date.now()

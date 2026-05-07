@@ -14,7 +14,7 @@ export default function TaskCard({ task, isTopTask }) {
         async function deleteTask() {
                 dispatch({type: 'DELETE', payload: task})
                 try {
-                        const response = await fetch('http://localhost:3000/api/tasks/' + task._id, {
+                        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/tasks/${task._id}`, {
                                 method: 'DELETE',
                                 headers: {
                                         user_id
@@ -32,7 +32,7 @@ export default function TaskCard({ task, isTopTask }) {
                 dispatch({type: 'UPDATE', payload: {_id, status: 'done'}})
                 try {
                         const updates = {...task, status: 'done'}
-                        const response = await fetch('http://localhost:3000/api/tasks/' + task._id, {
+                        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/tasks/${task._id}`, {
                                 method: 'PATCH',
                                 headers: {
                                         'Content-Type': 'application/json',
@@ -66,10 +66,6 @@ export default function TaskCard({ task, isTopTask }) {
                         <div className='actions'>
                                 <span className='material-symbols-outlined button' onClick={markTaskDone}>check</span>
                                 <span className='material-symbols-outlined button' onClick={deleteTask}>delete</span>
-                                {/* <button onClick={() => moveTask(1)} style={{display: task.quadrant !== 1 ? 'inline' : 'none'}}>Q1</button>
-                                <button onClick={() => moveTask(2)} style={{display: task.quadrant !== 2 ? 'inline' : 'none'}}>Q2</button>
-                                <button onClick={() => moveTask(3)} style={{display: task.quadrant !== 3 ? 'inline' : 'none'}}>Q3</button>
-                                <button onClick={() => moveTask(4)} style={{display: task.quadrant !== 4 ? 'inline' : 'none'}}>Q4</button> */}
                         </div>
                 </div>
         )

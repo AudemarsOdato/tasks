@@ -37,7 +37,7 @@ export default function Quadrants() {
                         dispatch({type: 'UPDATE', payload: {_id: taskId, quadrant: targetQuadrant}})
                         try {
                                 const updates = {...task, quadrant: targetQuadrant}
-                                const response = await fetch('http://localhost:3000/api/tasks/' + task._id, {
+                                const response = await fetch(`${import.meta.env.VITE_API_URL}/api/tasks/${task._id}`, {
                                         method: 'PATCH',
                                         headers: {
                                                 'Content-Type': 'application/json',

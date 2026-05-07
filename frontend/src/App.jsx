@@ -19,7 +19,7 @@ export default function App() {
                 const initUser = async () => {
                         let storedUUID = localStorage.getItem('uuid')
                         if (!storedUUID) {
-                                const response = await fetch('http://localhost:3000/api/users/uuid')
+                                const response = await fetch(`${import.meta.env.VITE_API_URL}/api/users/uuid`)
                                 const json = await response.json()
                                 localStorage.setItem('uuid', json)
                                 storedUUID = json
@@ -34,7 +34,7 @@ export default function App() {
         
         async function getTasks(user_id) {
                 try {
-                        const response = await fetch('http://localhost:3000/api/tasks', {
+                        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/tasks`, {
                                 headers: {
                                         user_id
                                         // 'user_id': 'audemars'
